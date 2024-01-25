@@ -1,17 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
+#include "header.h"
 
-typedef struct node{
-    int data;
-    struct node *next;
-}node;
-
-typedef struct stack{
-    int size;
-    node *top;
-}stack;
 void push(stack *stack,int data)
 {
     node *new_node;
@@ -24,17 +12,20 @@ void push(stack *stack,int data)
         stack->top = new_node;
     }
     else
+    {
         stack->top = new_node;
+        stack->bottom = new_node;
+    }
     stack->size++;
 }
 node *pop(stack *stack)
 {
+    node *popped;
     if(!stack->top)
     {
         puts("the stack is empty");
         return NULL;
     }
-    node *popped;
     popped = stack->top;
     stack->top = stack->top->next;
     stack->size--;
@@ -44,15 +35,15 @@ int is_empty(stack *stack)
 {
     return(stack->size <= 0);
 }
-void push_a(stack *stack_a,stack *stack_b)
+void pa(stack *stack_a,stack *stack_b)
 {
     if(is_empty(stack_b) != 1)
     {
-        push(stack_a,stack_b->top->data);
+        push(stack_a, stack_b->top->data);
         free(pop(stack_b));
     }
 }
-void push_b(stack *stack_a,stack *stack_b)
+void Pb(stack *stack_a,stack *stack_b)
 {
     if(is_empty(stack_a) != 1)
     {
@@ -60,50 +51,102 @@ void push_b(stack *stack_a,stack *stack_b)
         free(pop(stack_a));
     }
 }
-void swap_a(stack *stack_a)
+void Sa(stack *stack_a)
 {
     node *temp = stack_a->top->next;
     stack_a->top->next = stack_a->top->next->next;
     temp->next = stack_a->top;
     stack_a->top = temp;
 }
-void swap_b(stack *stack_b)
+void Sb(stack *stack_b)
 {
-    swap_a(stack_b);
+    Sa(stack_b);
 }
-void rotate_a(stack *stack_a)
+void ra(stack *stack_a)
 {
     node *temp;
-    node *befor_last;
     temp = stack_a->top;
-    while(stack_a->top->next)
-        stack_a->top = stack_a->top->next;
-    stack_a->top->next = temp;
-    stack_a->top = temp->next;
+    stack_a->top = stack_a->top->next;
+    stack_a->bottom->next = temp;
     temp->next = NULL;
+    stack_a->bottom = temp;
 }
-void rotate_b(stack *stack_b)
+void rb(stack *stack_b)
 {
-    void rotate_a(stack_b);
+    ra(stack_b);
 }
-void reverse_rotate_a(stack *stack_a)
+void rr(stack *stack_a,stack *stack_b)
 {
-    while(stack_a->top->next)
-        stack_a->top = stack_a->top->next
+    ra(stack_a);
+    rb(stack_b);
 }
-int main()
+void rrr(stack *stack_a,stack *stack_b)
 {
-    stack *stack_a = (stack *)malloc(sizeof(stack));
-    stack *stack_b = (stack *)malloc(sizeof(stack));
-    stack_a->top = NULL;
-    stack_b->top = NULL;
-    stack_a->size = 0;
-    stack_b->size = 0;
-    push(stack_a,1);
-    push(stack_a,2);
-    push(stack_a,3);
-    push(stack_a,4);
-    push(stack_a,5);
-    rotate_a(stack_a);
-    printf("%d\n",stack_a->top->data);
+    rra(stack_a);
+    rrb(stack_b);
+}
+void rra(stack *stack_a)
+{
+    node *temp;
+    node *befor_last_element;
+    temp = stack_a->top;
+    while(temp->next)
+    {
+        befor_last_element = temp;
+        temp = temp->next;
+    }
+    befor_last_element->next = NULL;
+    stack_a->bottom->next = stack_a->top;
+    stack_a->top = stack_a->bottom;
+    stack_a->bottom = befor_last_element;
+}
+void rrb(stack *stack_b)
+
+#define RED "\033[31m"
+#define RESET "\033[0m"
+{
+    rra(stack_b);
+}
+
+void sig_handler(int signo)
+{
+    (void)signo;
+}
+
+int main(int argc,char **argv)
+{
+    if(argc > 1)
+    {
+        stack *stack_a = (stack *)malloc(sizeof(stack));
+        stack *stack_b = (stack *)malloc(sizeof(stack));
+        stack_a->top = NULL;
+        stack_b->top = NULL;
+        stack_a->size = 0;
+        stack_b->size = 0;
+        longest_increasing_subsequence_caller(stack_a,stack_b,argc,argv);
+        // puts(" stack_a   ");
+        //     for(int i = 500; i >= 0; i--) {
+        //         printf("%d ", i);
+        //     }
+        // while(stack_a->top)
+        // {   
+        //     int data = stack_a->top->data;
+        //     stack_a->top = stack_a->top->next;
+        //     if (stack_a->top && data < stack_a->top->data)
+        //         printf("%d\n",data);
+        //     else
+        //     {
+        //         s++;
+        //         printf(RED"%d\n"RESET, data);
+        //     }
+        // }
+        // puts("\n stack_b  ");
+        // while(stack_b->top)
+        // {   
+        //     printf("\n|   %d   |\n",stack_b->top->data);
+        //     stack_b->top = stack_b->top->next;
+        // }
+        free(stack_a);
+        free(stack_b);
+    }
 }
