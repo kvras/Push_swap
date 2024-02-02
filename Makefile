@@ -1,7 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCM = longest_increasing_subsequence.c stack.c longest_increasing_subsequence_caller.c ft_atoi.c ft_split.c ft_memmove.c ft_memcpy.c
-SRCB = stack.c ft_atoi.c ft_split.c ft_memmove.c ft_memcpy.c longest_increasing_subsequence_caller stack.c
+SRCM = longest_increasing_subsequence.c stack.c longest_increasing_subsequence_caller.c ft_atoi.c ft_split.c ft_memmove.c \
+		ft_memcpy.c longest_increasing_subsequence_utils.c parsing.c help_functions.c
+SRCB = t_stack.c ft_atoi.c ft_split.c ft_memmove.c ft_memcpy.c longest_increasing_subsequence_caller t_stack.c
 OBJM = $(SRCM:.c=.o)
 OBJB = $(SRCB:.c=.o)
 NAME_M = push_swap

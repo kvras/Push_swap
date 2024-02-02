@@ -1,10 +1,10 @@
 #include "header.h"
 
-int checker(stack *stack)
+int checker(t_stack *t_stack)
 {
-    node *temp;
-    node *temp2;
-    temp = stack->top;
+    t_node *temp;
+    t_node *temp2;
+    temp = t_stack->top;
     while (temp)
     {
         temp2 = temp->next;
@@ -18,7 +18,7 @@ int checker(stack *stack)
     }
     return 0;
 }
-int parsing(int argc, char **argv, stack *stack_a)
+int parsing(int argc, char **argv, t_stack *stack_a)
 {
     int i;
     char **temp;
@@ -67,44 +67,44 @@ int	ft_strcmp(char *str1, char *str2)
 		return (-s2[i]);
 	return (0);
 }
-void push(stack *stack, int data)
+void push(t_stack *t_stack, int data)
 {
-    node *new_node;
-    new_node = (node *)malloc(sizeof(node));
-    if (!new_node)
+    t_node *new_t_node;
+    new_t_node = (t_node *)malloc(sizeof(t_node));
+    if (!new_t_node)
         return;
-    new_node->next = NULL;
-    new_node->data = data;
-    if (stack->top)
+    new_t_node->next = NULL;
+    new_t_node->data = data;
+    if (t_stack->top)
     {
-        new_node->next = stack->top;
-        stack->top = new_node;
+        new_t_node->next = t_stack->top;
+        t_stack->top = new_t_node;
     }
     else
     {
-        stack->top = new_node;
-        stack->bottom = new_node;
+        t_stack->top = new_t_node;
+        t_stack->bottom = new_t_node;
     }
-    stack->size++;
+    t_stack->size++;
 }
-node *pop(stack *stack)
+t_node *pop(t_stack *t_stack)
 {
-    node *popped;
-    if (!stack->top)
+    t_node *popped;
+    if (!t_stack->top)
     {
-        puts("the stack is empty");
+        puts("the t_stack is empty");
         return NULL;
     }
-    popped = stack->top;
-    stack->top = stack->top->next;
-    stack->size--;
+    popped = t_stack->top;
+    t_stack->top = t_stack->top->next;
+    t_stack->size--;
     return popped;
 }
-int is_empty(stack *stack)
+int is_empty(t_stack *t_stack)
 {
-    return (stack->size <= 0);
+    return (t_stack->size <= 0);
 }
-void pa(stack *stack_a, stack *stack_b)
+void pa(t_stack *stack_a, t_stack *stack_b)
 {
     if (is_empty(stack_b) != 1)
     {
@@ -112,7 +112,7 @@ void pa(stack *stack_a, stack *stack_b)
         free(pop(stack_b));
     }
 }
-void pb(stack *stack_a, stack *stack_b)
+void pb(t_stack *stack_a, t_stack *stack_b)
 {
     if (is_empty(stack_a) != 1)
     {
@@ -120,21 +120,21 @@ void pb(stack *stack_a, stack *stack_b)
         free(pop(stack_a));
     }
 }
-void sa(stack *stack_a)
+void sa(t_stack *stack_a)
 {
-    node *temp = stack_a->top->next;
+    t_node *temp = stack_a->top->next;
     stack_a->top->next = stack_a->top->next->next;
     temp->next = stack_a->top;
     stack_a->top = temp;
 }
-void sb(stack *stack_b)
+void sb(t_stack *stack_b)
 {
     sa(stack_b);
 }
-void print_stack(stack *stack)
+void print_t_stack(t_stack *t_stack)
 {
     int i = 0;
-    node *temp = stack->top;
+    t_node *temp = t_stack->top;
     while (temp)
     {
         printf("|%d| %d \n",i,temp->data);
@@ -142,38 +142,38 @@ void print_stack(stack *stack)
         i++;
     }
 }
-void ss(stack *stack_a, stack *stack_b)
+void ss(t_stack *stack_a, t_stack *stack_b)
 {
     sa(stack_a);
     sb(stack_b);
 }
-void ra(stack *stack_a)
+void ra(t_stack *stack_a)
 {
-    node *temp;
+    t_node *temp;
     temp = stack_a->top;
     stack_a->top = stack_a->top->next;
     stack_a->bottom->next = temp;
     temp->next = NULL;
     stack_a->bottom = temp;
 }
-void rb(stack *stack_b)
+void rb(t_stack *stack_b)
 {
     ra(stack_b);
 }
-void rr(stack *stack_a, stack *stack_b)
+void rr(t_stack *stack_a, t_stack *stack_b)
 {
     ra(stack_a);
     rb(stack_b);
 }
-void rrr(stack *stack_a, stack *stack_b)
+void rrr(t_stack *stack_a, t_stack *stack_b)
 {
     rra(stack_a);
     rrb(stack_b);
 }
-void rra(stack *stack_a)
+void rra(t_stack *stack_a)
 {
-    node *temp;
-    node *befor_last_element;
+    t_node *temp;
+    t_node *befor_last_element;
     temp = stack_a->top;
     while (temp->next)
     {
@@ -185,7 +185,7 @@ void rra(stack *stack_a)
     stack_a->top = stack_a->bottom;
     stack_a->bottom = befor_last_element;
 }
-void rrb(stack *stack_b)
+void rrb(t_stack *stack_b)
 {
     rra(stack_b);
 }
@@ -211,7 +211,7 @@ void sort_int_tab(int *tab)
         i++;
     }
 }
-int apply_operation(char *line, stack *stack_a, stack *stack_b)
+int apply_operation(char *line, t_stack *stack_a, t_stack *stack_b)
 {
     if (!ft_strcmp(line,"sa"))
         sa(stack_a);
@@ -239,10 +239,10 @@ int apply_operation(char *line, stack *stack_a, stack *stack_b)
         return (write(1,"Error\n",6),0);
     return 1;
 }
-void init_sort_array(stack *stack_a, int *tab)
+void init_sort_array(t_stack *stack_a, int *tab)
 {
     int i;
-    node *temp;
+    t_node *temp;
     i = 0;
     temp = stack_a->top;
     while (i<stack_a->size)
@@ -252,10 +252,10 @@ void init_sort_array(stack *stack_a, int *tab)
     }
     sort_int_tab(tab);
 }
-int stack_check(stack *stack_a, int *tab)
+int t_stack_check(t_stack *stack_a, int *tab)
 {
     int i;
-    node *temp;
+    t_node *temp;
     i = 0;
     temp = stack_a->top;
     while (temp)
@@ -270,9 +270,9 @@ int stack_check(stack *stack_a, int *tab)
 int main(int argc, char **argv)
 {
     char *line;
-    stack stack_a;
-    stack stack_b;
-    node *temp;
+    t_stack stack_a;
+    t_stack stack_b;
+    t_node *temp;
     int *tab;
     stack_a.top = NULL;
     stack_a.bottom = NULL;
@@ -292,5 +292,5 @@ int main(int argc, char **argv)
         if (!apply_operation(line,&stack_a,&stack_b))
             return (0);
     }
-    return (stack_check(&stack_a,tab));
+    return (t_stack_check(&stack_a,tab));
 }
