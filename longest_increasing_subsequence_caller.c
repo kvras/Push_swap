@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 02:16:38 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/02 04:34:30 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/02 04:55:34 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	execute(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move)
 		r_handler_a(stack_a, best_move->position_a, best_move->size_a);
 		r_handler_b(stack_b, best_move->position_b, best_move->size_b);
 		pa(stack_a, stack_b);
-		printf("pa\n");
+		ft_printf("pa\n");
 	}
 	else if (best_move->metric == 2)
 		rr_handler(stack_a, stack_b, best_move);

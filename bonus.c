@@ -137,7 +137,7 @@ void print_t_stack(t_stack *t_stack)
     t_node *temp = t_stack->top;
     while (temp)
     {
-        printf("|%d| %d \n",i,temp->data);
+        ft_printf("|%d| %d \n",i,temp->data);
         temp = temp->next;
         i++;
     }
