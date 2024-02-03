@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   push_swap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 04:45:01 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/02 04:56:25 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/03 19:23:38 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int		min(int a, int b);
 int		max(int a, int b);
 void	r_handler_a(t_stack *stack_a, int position_a, int size_a);
 void	r_handler_b(t_stack *stack_b, int position_b, int size_b);
-void	rr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move);
-void	rrr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move);
+int		rr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move);
+int		rrr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move);
 int		get_matching_index(t_node *top, int data, int min, int max);
 void	rotater(t_stack *stack_a);
 int		cleanupandreturn(int *indices_memoisation,
@@ -84,7 +84,7 @@ void	calculatelis(int *nums, int nums_size,
 			int *len_memoisation, int *indices_memoisation);
 void	findmax(int *len_memoisation, int nums_size,
 			int *max_len, int *max_index);
-int		parsing(int argc, char **argv, t_stack *stack_a);
+int		parsing(int argc, char **argv, t_stack *stack_a, int i);
 int		initialize(int **len_memoisation,
 			int **indices_memoisation, int nums_size);
 #endif

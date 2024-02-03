@@ -6,11 +6,11 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:53:08 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/02 04:55:34 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "push_swap.h"
 
 int	set(int r, int rr, int rrr, int cost)
 {
@@ -69,7 +69,7 @@ void	r_handler_b(t_stack *stack_b, int position_b, int size_b)
 	}
 }
 
-void	rr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move)
+int	rr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move)
 {
 	int	i;
 
@@ -88,48 +88,41 @@ void	rr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move)
 			rb(stack_b);
 			ft_printf("rb\n");
 		}
-		pa(stack_a, stack_b);
-		ft_printf("pa\n");
-		return ;
+		return (pa(stack_a, stack_b), ft_printf("pa\n", 0));
 	}
 	while (best_move->position_a - best_move->position_b -(i++))
 	{
 		ra(stack_a);
 		ft_printf("ra\n");
 	}
-	pa(stack_a, stack_b);
-	ft_printf("pa\n");
+	return (pa(stack_a, stack_b), ft_printf("pa\n", 0));
 }
 
-void	rrr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *best_move)
+int	rrr_handler(t_stack *stack_a, t_stack *stack_b, t_best_move *b)
 {
 	int	i;
 
 	i = 0;
-	while (i < min(best_move->size_a - best_move->position_a, best_move->size_b - best_move->position_b))
+	while (i < min(b->size_a - b->position_a, b->size_b - b->position_b))
 	{
 		rrr(stack_a, stack_b);
 		ft_printf("rrr\n");
 		i++;
 	}
 	i = 0;
-	if (best_move->size_a - best_move->position_a < best_move->size_b - best_move->position_b)
+	if (b->size_a - b->position_a < b->size_b - b->position_b)
 	{
-		while (best_move->size_b - best_move->position_b-best_move->size_a + best_move->position_a-(i++))
+		while (b->size_b - b->position_b - b->size_a + b->position_a - (i++))
 		{
 			rrb(stack_b);
 			ft_printf("rrb\n");
 		}
-		pa(stack_a, stack_b);
-		ft_printf("pa\n");
-		return ;
+		return (pa(stack_a, stack_b), ft_printf("pa\n", 0));
 	}
-	while (best_move->size_a - best_move->position_a-best_move->size_b + best_move->position_b-(i++))
+	while (b->size_a - b->position_a - b->size_b + b->position_b - (i++))
 	{
 		rra(stack_a);
 		ft_printf("rra\n");
 	}
-	pa(stack_a, stack_b);
-	ft_printf("pa\n");
+	return (pa(stack_a, stack_b), ft_printf("pa\n", 0));
 }
-

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguiji <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:16:17 by miguiji           #+#    #+#             */
-/*   Updated: 2023/11/07 16:27:10 by miguiji          ###   ########.fr       */
+/*   Created: 2024/02/03 03:48:27 by miguiji           #+#    #+#             */
+/*   Updated: 2024/02/03 18:11:50 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "bonus.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t len)
 {

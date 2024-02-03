@@ -6,11 +6,11 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 01:26:36 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/02 03:03:56 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "push_swap.h"
 
 int	initialize(int **len_memoisation, \
 int **indices_memoisation, int nums_size)
@@ -81,7 +81,6 @@ int *len_memoisation, int *indices_memoisation)
 		x++;
 	}
 }
-
 
 int	cleanupandreturn(int *indices_memoisation, int *max_seq, \
 	int max_len, int max_index)
