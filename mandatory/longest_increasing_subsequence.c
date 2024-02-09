@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 01:26:36 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/10 00:10:23 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	findfirst(int *indices_memoisation, int *len_memoisation, int nums_size)
 	int	max_len;
 	int	max_index;
 
+	max_len = 0;
+	max_index = 0;
 	findmax(len_memoisation, nums_size, &max_len, &max_index);
 	while (max_len-- > 1)
 		max_index = indices_memoisation[max_index];

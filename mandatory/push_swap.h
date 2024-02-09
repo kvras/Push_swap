@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                           :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 04:45:01 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/03 19:23:38 by miguiji          ###   ########.fr       */
+/*   Created: 2024/02/04 00:48:15 by miguiji           #+#    #+#             */
+/*   Updated: 2024/02/09 17:21:40 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "get_next_line.h"
-# include "printf/libftprintf.h"
+# include "../printf/libftprintf.h"
 
 typedef struct s_node
 {
@@ -44,6 +43,7 @@ typedef struct s_best_move
 	int	cost;
 }	t_best_move;
 
+int		check_if_sorted(t_stack *stack);
 long	ft_atoi(const char *str);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	**ft_split(char *original, char c);
@@ -87,4 +87,7 @@ void	findmax(int *len_memoisation, int nums_size,
 int		parsing(int argc, char **argv, t_stack *stack_a, int i);
 int		initialize(int **len_memoisation,
 			int **indices_memoisation, int nums_size);
+void	sort_of_3(t_stack *a);
+void	sort_of_5(t_stack *a, t_stack *b);
+void	free_stack(t_stack *stack);
 #endif

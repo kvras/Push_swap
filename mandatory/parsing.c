@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:58:55 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:47:15 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,32 @@ int	checker(t_stack *stack_a)
 	return (0);
 }
 
+void	free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr && arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
 int	parsing(int argc, char **argv, t_stack *stack_a, int i)
 {
 	char	**temp;
 	int		x;
 
+	temp = NULL;
 	while ((argc - (++i)) > 0)
 	{
 		x = 0;
+		free_arr(temp);
 		temp = ft_split(argv[argc - i], ' ');
 		if (!temp[x])
-			return (0);
+			return (free_arr(temp), 0);
 		while (temp[x])
 			x++;
 		while (x-- > 0)
@@ -53,12 +68,10 @@ int	parsing(int argc, char **argv, t_stack *stack_a, int i)
 				if (checker(stack_a) == 0)
 					continue ;
 			}
-			return (0);
+			return (free_arr(temp), 0);
 		}
-		free(temp);
-		temp = NULL;
 	}
-	return (1);
+	return (free_arr(temp), 1);
 }
 
 int	search(int *array, int size, int number)

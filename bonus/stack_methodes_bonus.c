@@ -6,11 +6,11 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:13:28 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:55:48 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	push(t_stack *t_stack, int data)
 {
@@ -34,15 +34,15 @@ int	push(t_stack *t_stack, int data)
 	return (t_stack->size++, 1);
 }
 
-t_node	*pop(t_stack *t_stack)
+t_node	*pop(t_stack *stack)
 {
 	t_node	*popped;
 
-	if (!t_stack->top)
+	if (!stack->top)
 		return (NULL);
-	popped = t_stack->top;
-	t_stack->top = t_stack->top->next;
-	t_stack->size--;
+	popped = stack->top;
+	stack->top = stack->top->next;
+	stack->size--;
 	return (popped);
 }
 

@@ -6,11 +6,11 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:49:05 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/03 18:12:23 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/07 23:57:12 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "push_swap_bonus.h"
 
 static	int	word_count(char *original, char c)
 {
@@ -82,15 +82,3 @@ char	**ft_split(char *original, char c)
 	}
 	return (d_arr);
 }
-
-// int main()
-// {
-// 	int i = 0;
-// 	char **results = ft_split("NULL", );
-// 	while (results[i])
-// 	{
-// 		ft_printf("%s", results[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }

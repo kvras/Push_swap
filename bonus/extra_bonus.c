@@ -6,11 +6,11 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 19:18:28 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/03 19:32:32 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:26:44 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "push_swap_bonus.h"
 
 int	ft_strcmp(char *str1, char *str2)
 {

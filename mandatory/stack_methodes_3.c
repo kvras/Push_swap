@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:13:32 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:59:44 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	rra(t_stack *stack_a)
 	t_node	*temp;
 	t_node	*befor_last_element;
 
+	if (stack_a->size <= 1)
+		return ;
 	temp = stack_a->top;
 	while (temp->next)
 	{

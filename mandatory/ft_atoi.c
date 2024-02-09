@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_bonus.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:47:05 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/03 18:12:06 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/08 19:42:49 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "push_swap.h"
 
 long	ft_atoi(const char *str)
 {
-	int					i;
 	int					signe;
 	long				a;
+	int					i;
 
-	a = LONG_MAX;
-	signe = 1;
+	a = 0;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == 45 && str[i + 1] >= 48 && str[i + 1] <= 57)
+	signe = 1;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		signe = signe * -1;
-		i++;
+		if (str[i++] == '-')
+			signe = -1;
 	}
-	else if (str[i] == 43 && str[i + 1] >= 48 && str[i + 1] <= 57)
-		i++;
-	if (str[i] >= 48 && str[i] <= 57)
-		a = 0;
-	while (str[i] >= 48 && str[i] <= 57)
-		a = a * 10 + str[i++] - 48;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (!str[i])
-		return (a * signe);
-	return (LONG_MAX);
+	if (str[i] < '0' || str[i] > '9')
+		return (LONG_MAX);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		a = a * 10 + (str[i++] - '0') * signe;
+		if (a > INT_MAX || a < INT_MIN)
+			return (LONG_MAX);
+	}
+	if (str[i])
+		return (LONG_MAX);
+	return (a);
 }

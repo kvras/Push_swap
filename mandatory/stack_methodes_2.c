@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_methodes_2_bonus.c                           :+:      :+:    :+:   */
+/*   stack_methodes_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:13:40 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/04 00:18:42 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/09 23:58:14 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sa(t_stack *stack_a)
 {
 	t_node	*temp;
 
-	if (stack_a->size < 2)
+	if (stack_a->size <= 1)
 		return ;
 	temp = stack_a->top->next;
 	stack_a->top->next = stack_a->top->next->next;
@@ -26,15 +26,11 @@ void	sa(t_stack *stack_a)
 
 void	sb(t_stack *stack_b)
 {
-	if (stack_b->size < 2)
-		return ;
 	sa(stack_b);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->size < 2 || stack_b->size < 2)
-		return ;
 	sa(stack_a);
 	sb(stack_b);
 }
@@ -43,7 +39,7 @@ void	ra(t_stack *stack_a)
 {
 	t_node	*temp;
 
-	if (stack_a->size < 1)
+	if (stack_a->size <= 1)
 		return ;
 	temp = stack_a->top;
 	stack_a->top = stack_a->top->next;
@@ -54,7 +50,5 @@ void	ra(t_stack *stack_a)
 
 void	rb(t_stack *stack_b)
 {
-	if (stack_b->size < 1)
-		return ;
 	ra(stack_b);
 }

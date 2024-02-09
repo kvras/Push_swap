@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.h                                            :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 06:46:41 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/03 19:20:45 by miguiji          ###   ########.fr       */
+/*   Created: 2024/02/04 00:48:51 by miguiji           #+#    #+#             */
+/*   Updated: 2024/02/08 20:07:20 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BONUS_H
-# define BONUS_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <limits.h>
 # include <stdio.h>
@@ -19,7 +19,7 @@
 # include <string.h>
 # include <unistd.h>
 # include "get_next_line.h"
-# include "printf/libftprintf.h"
+# include "../printf/libftprintf.h"
 
 typedef struct s_node
 {
@@ -39,7 +39,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*get_next_line(int fd);
 int		push(t_stack *stack, int data);
-t_node	pop(t_stack *stack);
+t_node	*pop(t_stack *stack);
 void	pa(t_stack *stack_a, t_stack *stack_b);
 void	pb(t_stack *stack_a, t_stack *stack_b);
 void	sa(t_stack *stack_a);
@@ -52,12 +52,17 @@ void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 int		is_empty(t_stack *stack);
-int		checker(t_stack stack);
+int		checker(t_stack *stack);
 int		parsing(int argc, char **argv, t_stack *stack_a, int i);
-int		search(int *array, int size, int number);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	**ft_split(char *original, char c);
 void	init_sort_array(t_stack *stack_a, int *tab);
 int		apply_operation(char *line, t_stack *stack_a, t_stack *stack_b);
 int		ft_strcmp(char *str1, char *str2);
+void	free_stack(t_stack *stack);
+int		stack_check(t_stack *stack_a, int *tab);
+char	*get_next_line_caller(char **line);
+int		max(int a, int b);
+void	free_arr(char **arr);
+
 #endif
