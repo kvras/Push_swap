@@ -16,20 +16,20 @@ NAME_B = checker
 all : $(NAME_M)
 
 $(NAME_M) : $(OBJM) mandatory/push_swap.h
-	(cd printf && make)
-	 $(CC) $(CFLAGS) printf/libftprintf.a $(SRCM) -o $(NAME_M)
+	(cd ft_printf && make)
+	 $(CC) $(CFLAGS) ft_printf/libftprintf.a $(SRCM) -o $(NAME_M)
 
 bonus : $(NAME_B)
 
 $(NAME_B) : $(OBJB) bonus/push_swap_bonus.h
-	(cd printf && make)
-	$(CC) $(CFLAGS) printf/libftprintf.a $(SRCB) -o $(NAME_B)
+	(cd ft_printf && make)
+	$(CC) $(CFLAGS) ft_printf/libftprintf.a $(SRCB) -o $(NAME_B)
 clean :
-	(cd printf && make clean)
+	(cd ft_printf && make clean)
 	rm -f $(OBJM) $(OBJB)
 
 fclean : clean
-	(cd printf && make fclean)
+	(cd ft_printf && make fclean)
 	rm -f $(NAME_M) $(NAME_B)
 
 re : fclean all

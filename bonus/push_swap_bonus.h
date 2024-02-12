@@ -6,7 +6,7 @@
 /*   By: miguiji <miguiji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 00:48:51 by miguiji           #+#    #+#             */
-/*   Updated: 2024/02/08 20:07:20 by miguiji          ###   ########.fr       */
+/*   Updated: 2024/02/12 03:50:08 by miguiji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string.h>
 # include <unistd.h>
 # include "get_next_line.h"
-# include "../printf/libftprintf.h"
+# include "../ft_printf/libftprintf.h"
 
 typedef struct s_node
 {
