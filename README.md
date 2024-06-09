@@ -23,11 +23,11 @@ The project uses two stacks, `a` and `b`, and the following operations:
 
 ## Building and Running
 
-git clone [link]
+`git clone [link]`
 
-cd [Directorty]
+`cd [Directorty]`
 
-make
+`make`
 
 
 ## Algorithm and Efficiency
